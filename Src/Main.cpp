@@ -1,10 +1,19 @@
 #include "DxLib.h"	//DXライブラリのインクルード
 #include "Scene/Scene.h"
+#include"../Src/Enemy/Enemy.h"
+#include "../Src/Player/Player.h"
+#include "../Src/Input/Input.h"
+#include "../Src/Collision/Collison.h"
+#include "../Src/Scene/Common.h"
+#include "../Src/Scene/Clear/Clear.h"
+#include "../Src/Scene/Gameover/Gameover.h"
+#include "../Src/Scene/Title/Title.h"
+#include "../Src/Scene/Play/Play.h"
 
 
 
 // 現在のシーンID
-//SCENE_ID g_CurrentSceneId = SCENE_ID_INIT_TITLE;
+SCENE_ID g_CurrentSceneId = SCENE_ID_INIT_TITLE;
 
 // Win32アプリケーションは WinMain関数 から始まる
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -29,6 +38,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//-----------------------------------------
 	//一番最初に１回だけやる処理をここに書く
 
+	//クラスの呼び出し
+	SceneTitle title;
+	SceneClear clear;
+	ScenePlay play;
+	SceneGameOver gameover;
+
+	InitInput();
 	//-----------------------------------------
 
 	//ゲームメインループ
@@ -43,10 +59,94 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		//画面に表示されたものを初期化
 		ClearDrawScreen();
 
+		StepInput();
 		//-----------------------------------------
 		//ここからゲームの本体を書くことになる
 		//-----------------------------------------
+		switch (g_CurrentSceneId)
+		{
 
+		case SCENE_ID_INIT_TITLE:
+		{
+			title.InitTitle();
+		}
+		break;
+
+		case SCENE_ID_LOOP_TITLE:
+		{
+			title.StepTitle();
+			title.DrawTitle();
+		}
+		break;
+
+		case SCENE_ID_FIN_TITLE:
+		{
+			title.FinTitle();
+		}
+		break;
+
+		case SCENE_ID_INIT_PLAY:
+		{
+
+			play.InitPlay();
+
+		}
+		break;
+
+		case SCENE_ID_LOOP_PLAY:
+		{
+			play.StepPlay();
+			//描画
+			play.DrawPlay();
+		}
+		break;
+
+		case SCENE_ID_FIN_PLAY:
+		{
+			play.FinPlay();
+		}
+		break;
+
+		case SCENE_ID_INIT_GAMEOVER:
+		{
+			gameover.InitGameOver();
+		}
+		break;
+
+		case SCENE_ID_LOOP_GAMEOVER:
+		{
+			gameover.StepGameOver();
+			gameover.DrawGameOver();
+
+		}
+		break;
+
+		case SCENE_ID_FIN_GAMEOVER:
+		{
+			gameover.FinGameOver();
+		}
+		break;
+
+		case SCENE_ID_INIT_CLEAR:
+		{
+			clear.InitClear();
+		}
+		break;
+
+		case SCENE_ID_LOOP_CLEAR:
+		{
+			clear.StepClear();
+			clear.DrawClear();
+
+		}
+		break;
+
+		case SCENE_ID_FIN_CLEAR:
+		{
+			clear.FinClear();
+		}
+		break;
+		}
 		
 
 

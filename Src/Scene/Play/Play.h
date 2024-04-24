@@ -1,7 +1,9 @@
 #pragma once
+#include "../../Enemy/Enemy.h"
 
 class ScenePlay {
 private:
+	Enemy enemy;
 	//画像用変数
 	
 	//クリアかオーバーか画面遷移時に確認するフラグ
