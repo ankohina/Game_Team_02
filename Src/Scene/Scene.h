@@ -1,7 +1,7 @@
 #pragma once
 
-#define	SCREEN_SIZE_X	1280	// X方向の画面サイズを指定
-#define	SCREEN_SIZE_Y	720		// Y方向の画面サイズを指定
+#define	SCREEN_SIZE_X	700	    // X方向の画面サイズを指定
+#define	SCREEN_SIZE_Y	1000		// Y方向の画面サイズを指定
 
 enum SCENE_ID
 {
@@ -27,4 +27,4 @@ enum SCENE_ID
 };
 
 //　現在のシーンID
-extern SCENE_ID g_CurrentSceneId;
+extern SCENE_ID g_CurrentSceneID;

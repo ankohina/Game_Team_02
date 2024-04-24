@@ -1,6 +1,7 @@
 #include "DxLib.h"	//DXライブラリのインクルード
 #include "Scene/Scene.h"
-
+#include "Playe/Player.h"
+//#include "../Src/Scene/Title/Title.h"
 
 
 // 現在のシーンID
@@ -23,8 +24,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//描画するスクリーンを設定する
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	
-	
+	Player player;
+	//SceneTitle Title;
 
 	//-----------------------------------------
 	//一番最初に１回だけやる処理をここに書く
@@ -47,9 +48,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		//ここからゲームの本体を書くことになる
 		//-----------------------------------------
 
-		
+		//switch (g_CurrentSceneID)
+		//{
+		//case SCENE_ID_INIT_TITLE:
+		//{
+		//	// タイトルの初期化
 
+		//}
+		//break;
 
+		player.InitPlayer();
+		player.StepPlayer();
+		player.DrawPlayer();
+		player.FinPlayer();
 
 
 
@@ -61,6 +72,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	}
 
+
 	//-----------------------------------------
 	//最後に１回だけやる処理をここに書く
 
@@ -71,4 +83,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	return 0;
 }
+
+
 
