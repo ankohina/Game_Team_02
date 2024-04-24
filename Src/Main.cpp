@@ -9,7 +9,8 @@
 #include "../Src/Scene/Gameover/Gameover.h"
 #include "../Src/Scene/Title/Title.h"
 #include "../Src/Scene/Play/Play.h"
-
+#include "Playe/Player.h"
+//#include "../Src/Scene/Title/Title.h"
 
 
 // 現在のシーンID
@@ -32,8 +33,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//描画するスクリーンを設定する
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	
-	
+	Player player;
+	//SceneTitle Title;
 
 	//-----------------------------------------
 	//一番最初に１回だけやる処理をここに書く
@@ -147,9 +148,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		}
 		break;
 		}
-		
-
-
 
 
 
@@ -161,6 +159,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	}
 
+
 	//-----------------------------------------
 	//最後に１回だけやる処理をここに書く
 
@@ -171,4 +170,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	return 0;
 }
+
+
 
