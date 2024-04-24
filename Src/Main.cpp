@@ -9,8 +9,8 @@
 #include "../Src/Scene/Gameover/Gameover.h"
 #include "../Src/Scene/Title/Title.h"
 #include "../Src/Scene/Play/Play.h"
-#include "Playe/Player.h"
-//#include "../Src/Scene/Title/Title.h"
+#include "../Src/Player/Player.h"
+#include "../Src/Scene/Title/Title.h"
 
 
 // åªç›ÇÃÉVÅ[ÉìID
