@@ -9,13 +9,13 @@ SceneGameOver::~SceneGameOver() {}
 
 // ゲームオーバー初期化
 void SceneGameOver::InitGameOver() {
-	g_CurrentSceneId = SCENE_ID_LOOP_GAMEOVER;
+	g_CurrentSceneID = SCENE_ID_LOOP_GAMEOVER;
 }
 
 // ゲームオーバー通常処理
 void SceneGameOver::StepGameOver() {
 	if (IsKeyPush(KEY_INPUT_RETURN)) {
-		g_CurrentSceneId = SCENE_ID_FIN_GAMEOVER;
+		g_CurrentSceneID = SCENE_ID_FIN_GAMEOVER;
 	}
 
 }
@@ -27,5 +27,5 @@ void SceneGameOver::DrawGameOver() {
 
 //ゲームオーバー終了処理
 void SceneGameOver::FinGameOver() {
-	g_CurrentSceneId = SCENE_ID_INIT_TITLE;
+	g_CurrentSceneID = SCENE_ID_INIT_TITLE;
 }

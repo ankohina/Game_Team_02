@@ -16,7 +16,7 @@ void ScenePlay::InitPlay() {
 	// プレイ画像の読込
 	
 
-	g_CurrentSceneId = SCENE_ID_LOOP_PLAY;
+	g_CurrentSceneID = SCENE_ID_LOOP_PLAY;
 }
 
 // ゲームプレイ通常処理
@@ -29,15 +29,16 @@ void ScenePlay::DrawPlay() {
 	//画像描画
 	
 	enemy.DrawEnemy();
+	player.DrawPlayer();
 }
 
 //ゲームプレイ終了処理
 void ScenePlay::FinPlay() {
 	//クリアフラグを確認して遷移先を決定
 	if (!isClear) {
-		g_CurrentSceneId = SCENE_ID_INIT_GAMEOVER;
+		g_CurrentSceneID = SCENE_ID_INIT_GAMEOVER;
 	}
 	if (isClear) {
-		g_CurrentSceneId = SCENE_ID_INIT_CLEAR;
+		g_CurrentSceneID = SCENE_ID_INIT_CLEAR;
 	}
 }
