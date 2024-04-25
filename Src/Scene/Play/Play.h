@@ -2,6 +2,9 @@
 #include "../../Enemy/Enemy.h"
 #include "../../Player/Player.h"
 
+#define LIFE_MAX_NUM		(5)
+
+#define LIFE_PATH		"data/Playimage/life.png"
 
 class ScenePlay {
 private:
@@ -12,6 +15,7 @@ private:
 	//クリアかオーバーか画面遷移時に確認するフラグ
 	bool isClear = false;
 
+	int LifeHndl[LIFE_MAX_NUM];
 	
 public:
 	ScenePlay();

@@ -14,7 +14,11 @@
 
 
 // 現在のシーンID
-SCENE_ID g_CurrentSceneId = SCENE_ID_INIT_TITLE;
+SCENE_ID g_CurrentSceneID = SCENE_ID_INIT_TITLE;
+
+
+int life_x = 0;
+int life_y = 0;
 
 // Win32アプリケーションは WinMain関数 から始まる
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -45,6 +49,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	ScenePlay play;
 	SceneGameOver gameover;
 
+
+
 	InitInput();
 	//-----------------------------------------
 
@@ -64,7 +70,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		//-----------------------------------------
 		//ここからゲームの本体を書くことになる
 		//-----------------------------------------
-		switch (g_CurrentSceneId)
+		switch (g_CurrentSceneID)
 		{
 
 		case SCENE_ID_INIT_TITLE:

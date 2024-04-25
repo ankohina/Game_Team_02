@@ -6,14 +6,31 @@
 
 
 
-ScenePlay::ScenePlay() {}
+ScenePlay::ScenePlay() {
+	for (int i = 0; i < LIFE_MAX_NUM; i++)
+	{
+		LifeHndl[i] = -1;
+	}
+}
 
-ScenePlay::~ScenePlay() {}
+ScenePlay::~ScenePlay() {
+
+}
 
 
 // ゲームプレイ初期化
 void ScenePlay::InitPlay() {
 	// プレイ画像の読込
+
+	enemy.InitEnemy();
+
+	for (int i = 1; i < LIFE_MAX_NUM; i++)
+	{
+		LifeHndl[i] = LoadGraph(LIFE_PATH);
+	}
+
+	life_x = 130;
+	life_y = 900;
 	
 
 	g_CurrentSceneID = SCENE_ID_LOOP_PLAY;
@@ -22,6 +39,7 @@ void ScenePlay::InitPlay() {
 // ゲームプレイ通常処理
 void ScenePlay::StepPlay() {
 	
+	enemy.StepEnemy();
 }
 
 // ゲームプレイ描画処理
@@ -30,6 +48,11 @@ void ScenePlay::DrawPlay() {
 	
 	enemy.DrawEnemy();
 	player.DrawPlayer();
+
+	for (int i = 1; i < LIFE_MAX_NUM; i++)
+	{
+		DrawGraph(life_x * i, life_y, LifeHndl[i], true);
+	}
 }
 
 //ゲームプレイ終了処理

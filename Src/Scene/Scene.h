@@ -28,3 +28,6 @@ enum SCENE_ID
 
 //@Œ»İ‚ÌƒV[ƒ“ID
 extern SCENE_ID g_CurrentSceneID;
+
+extern int life_x;
+extern int life_y;

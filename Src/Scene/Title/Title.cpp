@@ -28,7 +28,7 @@ void SceneTitle::StepTitle() {
 // タイトル描画処理
 void SceneTitle::DrawTitle() {
 	//画像描画
-	DrawFormatString(100, 100, GetColor(255, 255, 255), "aaaa");
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "タイトルEnterで進む");
 }
 
 //タイトル終了処理
