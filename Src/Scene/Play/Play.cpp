@@ -23,6 +23,7 @@ void ScenePlay::InitPlay() {
 	// プレイ画像の読込
 
 	enemy.InitEnemy();
+	player.InitPlayer();
 
 	for (int i = 1; i < LIFE_MAX_NUM; i++)
 	{
@@ -40,6 +41,7 @@ void ScenePlay::InitPlay() {
 void ScenePlay::StepPlay() {
 	
 	enemy.StepEnemy();
+	player.StepPlayer();
 }
 
 // ゲームプレイ描画処理
