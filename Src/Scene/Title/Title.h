@@ -4,7 +4,10 @@
 class SceneTitle {
 private:
 	//‰æ‘œ—p•Ï”
-	
+	int BackGround_img;
+	int canon_img;
+	int text_img;
+	int bomb_img;
 
 public:
 	SceneTitle();

@@ -2,7 +2,8 @@
 
 class SceneGameOver {
 private:
-
+	//”wŒi‰æ‘œ
+	int BackGround_img;
 public:
 	SceneGameOver();
 	~SceneGameOver();
