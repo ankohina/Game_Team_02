@@ -10,17 +10,16 @@
 Player::Player()
 {
 	m_handle;	        //画像ハンドル
-	m_background;       //背景
 	m_x, m_y = 0;		//座標
 	m_moveSpeed = 0;    //移動速度
 	m_isUse = 0;        //使用中フラグ
 
 
-	m_bullet1_handle;   //弾の画像ハンドル
-	m_bullet_x, m_bullet_y = 0;       //弾の座標
-	m_bulletSpeed = 0;  //弾の移動速度
-	m_isUse2 = 0;        //使用中フラグ
-
+	bullet->m_bullet_handle;   //弾の画像ハンドル
+	bullet->m_bullet_x = 0;     //弾の座標X
+	bullet->m_bullet_y = 0;     //弾の座標Y
+	bullet->m_bulletSpeed = 0;  //弾の移動速度
+	bullet->m_isUse2 = 0;       //使用中フラグ
 }
 
 //デストラクタ
@@ -31,27 +30,26 @@ Player::~Player()
 //プレイ初期化
 void Player::InitPlayer()
 {
-	//背景関連
-	m_background = LoadGraph(BACK_GROUND);
+	
 
 	//プレイヤー関連
 	m_handle = LoadGraph(PLAYER_PATH);
 	m_x = 200.0f;
-	m_y = 400.0f;
+	m_y = 780.0f;
 	m_moveSpeed = 5.0f;
 	m_isUse = true;
 
 	//弾関連
-	m_bullet1_handle = LoadGraph(BULLET_PATH);
-	m_bullet_x = 0;
-	m_bullet_y = 0;
-	m_bulletSpeed; 
-	m_isUse2;
+	bullet->m_bullet_handle = LoadGraph(BULLET_PATH);
+	bullet->m_bullet_x = 0;     
+	bullet->m_bullet_y = 0;    
+	bullet->m_bulletSpeed = 0;  
+	bullet->m_isUse2 = true;     
 
 	//弾初期化
 	for (int i = 0; i < BULLET_MAX_NUM; i++) {
 
-		//bullet[i].m_bullet1_handle = LoadGraph(BULLET_PATH);
+		bullet[i].m_bullet_handle = LoadGraph(BULLET_PATH);
 	}
 
 
@@ -60,6 +58,7 @@ void Player::InitPlayer()
 //プレイ通常処理
 void Player::StepPlayer()
 {
+	//プレイヤーの移動処理
 	MovePlayer();
 
 
@@ -67,18 +66,30 @@ void Player::StepPlayer()
 	if (m_x < -100.0f) {
 		m_x = 630.0f;
 	}
-	if (m_x > 700.0f) {
+	if (m_x > 750.0f) {
 		m_x = -100.0f;
 	}
+
+	//弾の発射間隔の調整関数
+	BulletTrigerCount();
+
+	//弾の発射処理関数
+	BulletShot();
+
+	//弾の移動処理関数
+	BulletMove();
+
 }
 
 //プレイ描画処理
 void Player::DrawPlayer()
 {
-	//プレイヤー描画
-	DrawGraph(0, 0, m_background, true);
-	DrawGraph(m_x, m_y, m_handle, true);
 	
+	//プレイヤー描画
+	DrawGraph(m_x, m_y, m_handle, true);
+
+	//弾の描画
+	BulletDraw();
 }
 
 //プレイ終了処理
@@ -102,69 +113,70 @@ void Player::MovePlayer()
 	}
 }
 
-//弾の発射処理
-void Player::BulletShot()
-{
+//弾の発射間隔の調整関数
+void Player::BulletTrigerCount() {
+
+	player.count++;
+	if (player.count > PLAYER_SHOT_INTERVAL) {
+		player.count = PLAYER_SHOT_INTERVAL;
+	}
 
 }
 
-//弾の移動処理
-void Player::BulletMove()
-{
+//弾の発射処理関数
+void Player::BulletShot() {
+	if (IsKeyKeep(KEY_INPUT_SPACE))
+		BulletTrigerCount();
+
+	//弾の発射処理
+	if (IsKeyRelease(KEY_INPUT_SPACE)) {
+		if (player.count == PLAYER_SHOT_INTERVAL) {
+			for (int i = 0; i < BULLET_MAX_NUM; i++) {
+				if (!bullet[i].m_isUse2) {
+					// プレイヤーの中心座標から弾を発射するために
+					// 弾座標の初期位置にプレイヤーの座標を設定
+					bullet[i].m_bullet_x = player.m_x + 105;
+					bullet[i].m_bullet_y = player.m_y - 35;
+					bullet[i].m_isUse2 = true;
+					break;
+				}
+			}
+		}
+		player.count = 0;
+	}
+
+	BulletMove();
+}
+
+//弾の移動処理関数
+void Player::BulletMove() {
+
+	for (int i = 0; i < BULLET_MAX_NUM; i++) {
+		if (bullet[i].m_isUse2) {
+			// 弾が使用中なら移動させる
+			bullet[i].m_bullet_y -= 12;
+
+			// 画面外に出たら未使用に戻す
+			if (bullet[i].m_bullet_y > SCREEN_SIZE_Y) {
+				bullet[i].m_isUse2 = false;
+			}
+		}
+
+	}
+
 
 }
 
-
-////弾の発射間隔の調整関数
-//void BulletTrigerCount() {
-//
-//	player.count++;
-//	if (player.count > PLAYER_SHOT_INTERVAL) {
-//		player.count = PLAYER_SHOT_INTERVAL;
-//	}
-//
-//}
-//
-////チャージショットの発射処理関数
-//void ChargebulletShot() {
-//	if (IsKeyKeep(KEY_INPUT_Z))
-//		BulletTrigerCount();
-//
-//	//弾の発射処理
-//	if (IsKeyRelease(KEY_INPUT_Z)) {
-//		if (player.count == PLAYER_SHOT_INTERVAL) {
-//			for (int i = 0; i < BULLET_MAX_NUM; i++) {
-//				if (!bullet[i].m_isUse) {
-//					// プレイヤーの中心座標から弾を発射するために
-//					// 弾座標の初期位置にプレイヤーの座標を設定
-//					bullet[i].m_bullet_x = player.m_x + 90;
-//					bullet[i].m_bullet_y = player.m_y + 20;
-//					bullet[i].m_isUse = true;
-//					break;
-//				}
-//			}
-//		}
-//		player.count = 0;
-//	}
-//
-//	ChargebulletMove();
-//}
-//
-////チャージショットの移動処理関数
-//void ChargebulletMove() {
-//
-//	for (int i = 0; i < BULLET_MAX_NUM; i++) {
-//		if (bullet[i].m_isUse) {
-//			// 弾が使用中なら移動させる
-//			bullet[i].m_y += 15;
-//
-//			// 画面外に出たら未使用に戻す
-//			if (bullet[i].m_y > SCREEN_SIZE_Y) {
-//				bullet[i].m_isUse = false;
-//			}
-//		}
-//
-//	}
-//
-//
-//}
+//弾の描画関数
+void Player::BulletDraw() {
+	//弾の描画
+	for (int i = 0; i < BULLET_MAX_NUM; i++)
+	{
+		//弾が使用中なら描画する
+		if (bullet[i].m_isUse2)
+		{
+			DrawRotaGraph(bullet[i].m_bullet_x, bullet[i].m_bullet_y,
+				1.0, 0.0, bullet[i].m_bullet_handle, true);
+		}
+	}
+}
