@@ -2,7 +2,7 @@
 
 #define ENEMY_MAX_NUM		(10)
 
-#define ENEMY_INTERVAL		(180)
+#define ENEMY_INTERVAL		(60)
 #define ENEMY_PATH		"data/Playimage/enemy.png"
 
 class Enemy

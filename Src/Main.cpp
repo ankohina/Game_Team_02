@@ -17,7 +17,7 @@
 SCENE_ID g_CurrentSceneID = SCENE_ID_INIT_TITLE;
 
 
-int life_x[] = { 0 };
+int life_x[LIFE_MAX_NUM] = { 0 };
 int life_y = 0;
 
 int enemy_x[ENEMY_MAX_NUM] = { 0 };
