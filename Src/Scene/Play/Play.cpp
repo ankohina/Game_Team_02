@@ -2,8 +2,12 @@
 #include "../Scene.h"
 #include "Play.h"
 #include "../../Input/Input.h"
+#include "../../Player/Player.h"
 
 
+
+Player player;
+Player::Bullet bullet[BULLET_MAX_NUM];
 
 
 ScenePlay::ScenePlay() {
@@ -22,6 +26,8 @@ ScenePlay::~ScenePlay() {
 void ScenePlay::InitPlay() {
 	// ƒvƒŒƒC‰æ‘œ‚Ì“Ç
 
+	//”wŒiŠÖ˜A
+	m_background = LoadGraph(BACK_GROUND);
 	enemy.InitEnemy();
 	player.InitPlayer();
 
@@ -47,7 +53,8 @@ void ScenePlay::StepPlay() {
 // ƒQ[ƒ€ƒvƒŒƒC•`‰æˆ—
 void ScenePlay::DrawPlay() {
 	//‰æ‘œ•`‰æ
-	
+	//”wŒi‚Ì•`‰æ
+	DrawGraph(0, 0, m_background, true);
 	enemy.DrawEnemy();
 	player.DrawPlayer();
 

@@ -9,7 +9,8 @@
 class ScenePlay {
 private:
 	Enemy enemy;
-	Player player;
+	
+	int m_background;     //背景
 	//画像用変数
 	
 	//クリアかオーバーか画面遷移時に確認するフラグ
