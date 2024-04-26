@@ -16,6 +16,8 @@ private:
 	bool isClear = false;
 
 	int LifeHndl[LIFE_MAX_NUM];
+
+	bool Life_flag[LIFE_MAX_NUM];
 	
 public:
 	ScenePlay();

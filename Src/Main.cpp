@@ -17,9 +17,13 @@
 SCENE_ID g_CurrentSceneID = SCENE_ID_INIT_TITLE;
 
 
-int life_x = 0;
+int life_x[] = { 0 };
 int life_y = 0;
 
+int enemy_x[ENEMY_MAX_NUM] = { 0 };
+int enemy_y[ENEMY_MAX_NUM] = { 0 };
+
+bool Enemy_Alive[ENEMY_MAX_NUM] = { false };
 // Win32アプリケーションは WinMain関数 から始まる
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {

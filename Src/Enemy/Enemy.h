@@ -1,17 +1,14 @@
 #pragma once
 
-#define ENEMY_MAX_NUM		(3)
+#define ENEMY_MAX_NUM		(10)
 
 #define ENEMY_INTERVAL		(180)
-#define ENEMY_PATH		"data/Playimage/kari_enemy64.png"
+#define ENEMY_PATH		"data/Playimage/enemy.png"
 
 class Enemy
 {
 private:
 	int EnemyHndl[ENEMY_MAX_NUM];
-	int enemy_x[ENEMY_MAX_NUM];
-	int enemy_y[ENEMY_MAX_NUM];
-	bool Enemy_Alive[ENEMY_MAX_NUM];
 	int distance_x;
 	int distance_y;
 	float Enemy_Count;

@@ -62,21 +62,24 @@ void Enemy::StepEnemy()
 	{
 		for (int i = 0; i < ENEMY_MAX_NUM; i++)
 		{
-			if (Enemy_Alive[i] == false)
+			for (int a = 0; a < LIFE_MAX_NUM; a++)
 			{
-				enemy_x[i] = GetRand(500) + 100;
-				enemy_y[i] = 0;
-				Enemy_Alive[i] = true;
+				if (Enemy_Alive[i] == false)
+				{
+					enemy_x[i] = GetRand(500) + 100;
+					enemy_y[i] = 0;
+					Enemy_Alive[i] = true;
 
-				//エネミーとライフの距離
-				distance_x = life_x - enemy_x[i];
-				distance_y = life_y - enemy_y[i];
+					//エネミーとライフの距離
+					distance_x = life_x[a] - enemy_x[i];
+					distance_y = life_y - enemy_y[i];
 
-				//落ちる処理
-				e_spd_x = distance_x / 300;
-				e_spd_y = distance_y / 300;
-				Enemy_Count = 0.0f;
-				break;
+					//落ちる処理
+					e_spd_x = distance_x / 300;
+					e_spd_y = distance_y / 300;
+					Enemy_Count = 0.0f;
+					break;
+				}
 			}
 		}
 	}
