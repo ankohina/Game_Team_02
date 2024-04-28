@@ -15,7 +15,7 @@ Player::Player()
 	m_isUse = 0;        //使用中フラグ
 
 
-	bullet->m_bullet_handle;   //弾の画像ハンドル
+	bullet->m_bullet_handle;    //弾の画像ハンドル
 	bullet->m_bullet_x = 0;     //弾の座標X
 	bullet->m_bullet_y = 0;     //弾の座標Y
 	bullet->m_bulletSpeed = 0;  //弾の移動速度
@@ -157,7 +157,7 @@ void Player::BulletMove() {
 			bullet[i].m_bullet_y -= 12;
 
 			// 画面外に出たら未使用に戻す
-			if (bullet[i].m_bullet_y > SCREEN_SIZE_Y) {
+			if (bullet[i].m_bullet_y < -1000) {
 				bullet[i].m_isUse2 = false;
 			}
 		}

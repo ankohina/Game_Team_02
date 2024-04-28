@@ -57,6 +57,28 @@ void ScenePlay::StepPlay() {
 	enemy.StepEnemy();
 	player.StepPlayer();
 
+
+	//’e‚Æ“G‚Ì“–‚½‚è”»’è
+	for (int b = 0; b < BULLET_MAX_NUM; b++) {
+		
+		if (bullet[b].m_isUse2 == true) {
+
+			for (int e = 0; e < ENEMY_MAX_NUM; e++) {
+
+				if (Enemy_Alive[e] == true) {
+
+					DrawBox(bullet[b].m_bullet_x, bullet[b].m_bullet_y, bullet[b].m_bullet_x + 100, bullet[b].m_bullet_y + 100, GetColor(255, 255, 255), true);
+					DrawBox(enemy_x[e], enemy_y[e], enemy_x[e] + 100, enemy_y[e] + 100, GetColor(255, 255, 255), true);
+					if (IsHitRect(enemy_x[e], enemy_y[e], 100, 100, bullet[b].m_bullet_x, bullet[b].m_bullet_y, 100,100)) {
+
+						Enemy_Alive[e] = false;
+					}
+
+				}
+			}
+		}
+	}
+
 	//“G‚Æƒ‰ƒCƒt‚Ì“–‚½‚è”»’è
 	for (int i = 0; i < ENEMY_MAX_NUM; i++)
 	{
@@ -89,7 +111,7 @@ void ScenePlay::StepPlay() {
 void ScenePlay::DrawPlay() {
 	//‰æ‘œ•`‰æ
 	//”wŒi‚Ì•`‰æ
-	/*DrawGraph(0, 0, m_background, true);*/
+	DrawGraph(0, 0, m_background, true);
 	enemy.DrawEnemy();
 	player.DrawPlayer();
 
