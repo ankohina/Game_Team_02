@@ -24,6 +24,7 @@ int enemy_x[ENEMY_MAX_NUM] = { 0 };
 int enemy_y[ENEMY_MAX_NUM] = { 0 };
 
 bool Enemy_Alive[ENEMY_MAX_NUM] = { false };
+
 // Win32アプリケーションは WinMain関数 から始まる
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {

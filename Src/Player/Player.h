@@ -1,10 +1,10 @@
 #pragma once
 
-#define BACK_GROUND "data/Playimage/Background.png"     //背景
-#define PLAYER_PATH "data/Playimage/canon.png" //プレイヤー(大砲)
-#define BULLET_PATH		"Data/PlayImage/Bullet.png"	//弾のパス
-#define BULLET_MAX_NUM	(100)				        //弾の最大数（ハンドルの数）
-#define PLAYER_SHOT_INTERVAL    (60)                //弾の発射間隔
+#define BACK_GROUND "data/Playimage/Background.png"  //背景
+#define PLAYER_PATH "data/Playimage/canon.png"       //プレイヤー(大砲)
+#define BULLET_PATH		"Data/PlayImage/Bullet.png"	 //弾のパス
+#define BULLET_MAX_NUM	(5)				             //弾の最大数（ハンドルの数）
+#define PLAYER_SHOT_INTERVAL    (120)                //弾の発射間隔
 
 
 //プレイヤークラス
