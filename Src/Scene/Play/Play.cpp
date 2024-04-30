@@ -71,6 +71,7 @@ void ScenePlay::StepPlay() {
 					DrawBox(enemy_x[e], enemy_y[e], enemy_x[e] + 100, enemy_y[e] + 100, GetColor(255, 255, 255), true);
 					if (IsHitRect(enemy_x[e], enemy_y[e], 100, 100, bullet[b].m_bullet_x, bullet[b].m_bullet_y, 100,100)) {
 
+						Score++;
 						Enemy_Alive[e] = false;
 					}
 

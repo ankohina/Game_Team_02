@@ -84,7 +84,8 @@ void Player::StepPlayer()
 //プレイ描画処理
 void Player::DrawPlayer()
 {
-	
+	DrawFormatString(0, 500, GetColor(255, 255, 255), "%f", player.count);
+
 	//プレイヤー描画
 	DrawGraph(m_x, m_y, m_handle, true);
 

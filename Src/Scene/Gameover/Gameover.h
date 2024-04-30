@@ -36,4 +36,6 @@ public:
 	void SetPos(int num1, int num2);
 
 	void DrawFont(int number);
+
+	void DrawNumber(int Hndl[10], int Score, int X, int Y);
 };

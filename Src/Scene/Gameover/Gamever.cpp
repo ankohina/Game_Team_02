@@ -10,7 +10,6 @@
 
 using namespace std;
 SceneGameOver::SceneGameOver() {
-    kari_score = 0;
     kari_highscore_img = 0;
 }
 
@@ -22,10 +21,6 @@ void SceneGameOver::InitGameOver() {
 	BackGround_img = LoadGraph(RESULT_PATH);
 	score_text_img = LoadGraph(RESULT_TEXT_PATH);
     kari_highscore_img = LoadGraph(RESULT_HIGH_SCORE_PATH);
-	
-    kari_score = 12;
-
-    
 
     LoadDivGraph("data/Clearimage/Number.png", 10, 10, 1, 30, 60, Number_handle);
 
@@ -37,7 +32,7 @@ void SceneGameOver::StepGameOver() {
 	if (IsKeyPush(KEY_INPUT_RETURN)) {
 		g_CurrentSceneID = SCENE_ID_FIN_GAMEOVER;
 	}
-    SetPos(450, 370);
+    SetPos(450, 400);
 }
 
 // ゲームオーバー描画処理
@@ -45,7 +40,8 @@ void SceneGameOver::DrawGameOver() {
 	DrawGraph(0, 0, BackGround_img, true);
     DrawGraph(210, 495, kari_highscore_img, true);
    
-    DrawFont(kari_score);
+    //DrawFont(kari_score);
+    DrawNumber(Number_handle, Score, numberX, numberY);
 }
 
 //ゲームオーバー終了処理
@@ -90,5 +86,23 @@ void SceneGameOver::DrawFont(int number)
     DrawGraph(numberX - 210, numberY, Number_handle[Digit_8], true);
    
     DrawGraph(numberX - 240, numberY, Number_handle[Digit_9], true);
-    
+
+}
+
+void SceneGameOver::DrawNumber(int Hndl[10], int Score, int X, int Y)//引数(数字画像格納ハンドル, 入れたいスコア, X座標, Y座標)
+{
+    //ポイント描画
+    int DrawScore = Score;
+
+    int count = 0;
+
+    if (DrawScore == 0) {
+        DrawRotaGraph(X - count * 30, Y, 1.0f, 0.0f, Hndl[0], true);
+    }
+    while (DrawScore > 0) {
+        int num = DrawScore % 10;	//数字の確定
+        DrawScore = DrawScore / 10;
+        DrawRotaGraph(X - count * 30, Y, 1.0f, 0.0f, Hndl[num], true);
+        count++;	//表示座標の変更
+    }
 }

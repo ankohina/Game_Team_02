@@ -122,8 +122,8 @@ void Enemy::DrawEnemy()
 		{
 			DrawGraph(enemy_x[i], enemy_y[i], EnemyHndl[i], true);
 		}
-		DrawFormatString(0, 15 * i, GetColor(255, 255, 255), "X座標：%d" "y座標：%d", enemy_x, enemy_y[i]);
-		DrawFormatString(0, 500, GetColor(255, 255, 255), "%f", Enemy_Count);
+		/*DrawFormatString(0, 15 * i, GetColor(255, 255, 255), "X座標：%d" "y座標：%d", enemy_x, enemy_y[i]);
+		DrawFormatString(0, 500, GetColor(255, 255, 255), "%f", Enemy_Count);*/
 	}
 
 	

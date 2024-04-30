@@ -34,3 +34,5 @@ extern int life_y;
 extern int enemy_x[];
 extern int enemy_y[];
 extern bool Enemy_Alive[];
+
+extern int Score;

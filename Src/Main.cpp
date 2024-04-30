@@ -15,7 +15,7 @@
 
 // åªç›ÇÃÉVÅ[ÉìID
 SCENE_ID g_CurrentSceneID = SCENE_ID_INIT_TITLE;
-
+int Score = 0;
 
 int life_x[LIFE_MAX_NUM] = { 0 };
 int life_y = 0;
